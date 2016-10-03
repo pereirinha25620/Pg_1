@@ -13,7 +13,13 @@ public class ConvertToSeconds {
 		int minIn = input.nextInt();
 		int secIn = input.nextInt();
 
-		boolean timeIsValid = hourIn >= 0 && hourIn < 24 && minIn >= 0 && minIn <= 60 && secIn >= 0 && secIn <= 60;
+		boolean timeIsValid;
+
+		if (hourIn == 24) {
+			timeIsValid = minIn == 0 && secIn == 0;
+		} else {
+			timeIsValid = hourIn >= 0 && hourIn < 24 && minIn >= 0 && minIn < 60 && secIn >= 0 && secIn < 60;
+		}
 
 		if (timeIsValid) {
 
