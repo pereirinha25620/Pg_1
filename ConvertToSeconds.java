@@ -22,18 +22,12 @@ public class ConvertToSeconds {
 		}
 
 		if (timeIsValid) {
-
 			int seconds = hourIn * 3600 + minIn * 60 + secIn;
 
 			System.out.println("*** A converter ***");
 			System.out.printf("%d:%d:%d --> %d segundos\n", hourIn, minIn, secIn, seconds);
-
 		} else {
-			
 			System.out.println("A hora introduzida não é válida.");
-
 		}
-
-
 	}
 }
