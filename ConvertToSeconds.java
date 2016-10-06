@@ -1,4 +1,11 @@
 
+/*
+	Program that allows to convert to seconds the any amount of hours within a full day [00:00:00 - 24:00:00]
+
+	Pedro Pereirinha - 25620 - LEIC - 2016/17
+	
+*/
+
 import java.util.Scanner;
 
 public class ConvertToSeconds {
