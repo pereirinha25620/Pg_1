@@ -27,19 +27,17 @@ public class JoinInterval {
 				if (a2 >= b2) { max2 = a2; } 
 				else { max2 = b2; }
 			} else {
-				min1 = a1;
 				max1 = a2;
 				min2 = b1;
 				max2 = b2;
 				hasOneInterval = false;
 			}
 		} else {
+			min1 = b1;
 			if (b2 >= a1) {
-				min1 = b1;
 				if (b2 >= a2) { max2 = b2; }
 				else { max2 = a2; }
 			} else {
-				min1 = b1;
 				max1 = b2;
 				min2 = a1;
 				max2 = a2;
