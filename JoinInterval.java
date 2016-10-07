@@ -21,8 +21,6 @@ public class JoinInterval {
 
 		boolean hasOneInterval = true;
 
-		long starTime = System.currentTimeMillis();
-
 		if (a1 <= b1) {
 			min1 = a1;
 			if (a2 >= b1) {
@@ -49,14 +47,11 @@ public class JoinInterval {
 			}
 		}
 
-		long elapsedTime = System.currentTimeMillis() - starTime;
-
 		if (hasOneInterval) {
 			System.out.printf("A união dos intervalos corresponde a [%d, %d]\n", min1, max2);
 		} else {
 			System.out.printf("A união dos intervalos corresponde a [%d, %d] + [%d, %d]\n", min1, max1, min2, max2);
 		}
 
-		System.out.printf("Executado em %d ms\n", elapsedTime);
 	}
 }
