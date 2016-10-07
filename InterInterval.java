@@ -21,20 +21,24 @@ public class InterInterval {
 		boolean interIsAPoint = false;
 
 		if (a1 < b1) {
-			if (a2 == b1) { min = a2; interIsAPoint = true; }
-			else if (b1 < a2) {
+			if (a2 == b1) { 
+				min = a2; 
+				interIsAPoint = true;
+			} else if (b1 < a2) {
 				min = b1;
-				if (a2 <= b2) { max = a2; }
-				else { max = b2; }
+				if (a2 <= b2) max = a2;
+				else max = b2;
 			} else {
 				hasIntersection = false;
 			}	
 		} else {
-			if (b2 == a1) { min = b2; interIsAPoint = true; }
-			else if (a1 < b2) {
+			if (b2 == a1) { 
+				min = b2; 
+				interIsAPoint = true; 
+			} else if (a1 < b2) {
 				min = a1;
-				if (b2 <= a2) { max = b2; }
-				else { max = a2; }
+				if (b2 <= a2) max = b2;
+				else max = a2;
 			} else {
 				hasIntersection = false;
 			}
