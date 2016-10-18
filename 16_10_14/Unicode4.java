@@ -15,6 +15,5 @@ public class Unicode4 {
 		int offset = l2 > l1 ? l2 - l1 + 1: l1 - l2 + 1;
 
 		System.out.printf("Letra %c e Letra %c, existem %d letras no alfabeto.\n", l1, l2, offset);
-
 	}
 }
