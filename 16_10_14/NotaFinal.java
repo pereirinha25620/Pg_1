@@ -34,11 +34,12 @@ public class NotaFinal {
 		
 		if (!reprovado) {
 
-			double notaFinal = (0.2*mediaFA + 0.4*(notaTF + mediaTP));
+			double notaFinal = (0.2*mediaFA + 0.4*(notaTF + mediaTP)) + 0.5;
 
 			boolean suf = notaFinal >= 10 && notaFinal <= 13;
 			boolean bom = notaFinal >= 14 && notaFinal <= 15;
 			boolean mtBom = notaFinal >= 16 && notaFinal <= 17;
+			boolean exc = notaFinal >= 18 && notaFinal <= 20;
 			
 			if (suf) {
 				System.out.printf("Nota Final: %.0f - Classificação: Suficiente\n", notaFinal);
@@ -48,7 +49,7 @@ public class NotaFinal {
 				System.out.printf("Nota Final: %.0f - Classificação: Muito Bom\n", notaFinal);
 			} else {
 				System.out.printf("Nota Final: %.0f - Classificação: Excelente\n", notaFinal);
-			}
+			} 
 		}
 	}
 }
