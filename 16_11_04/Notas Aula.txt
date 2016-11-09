@@ -1,0 +1,4 @@
+TPC: 
+- Intersecção e união de arrays
+- Os arrays são introduzidos por ordem crescente (assume-se que os arrays são introduzidos já ordenados)
+
