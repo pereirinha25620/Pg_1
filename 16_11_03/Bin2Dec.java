@@ -22,7 +22,6 @@ public class Bin2Dec {
 				}
 			}
 			if (!binNumberIsValid) System.out.println("Binary number is not valid. Type again.");
-			else break;
 		}
 
 		long decNumber = 0;
