@@ -58,7 +58,8 @@ public class ArrayUtilities {
 		System.out.println("After rotate right");
 		rotateRight(arr);
 		printArray(arr, 0, arr.length-1);
-
+	
+		*/
 		// add num
 		int num = 10;
 		int[] newarr = new int[arr.length+1];
@@ -66,6 +67,7 @@ public class ArrayUtilities {
 		newarr = append(newarr, num);
 		printArray(newarr, 0, newarr.length-1);
 
+		/*
 		//  square of elements
         System.out.println("Square elements of an array: ");
         printArray(quadratic(newarr), 0, newarr.length - 1);
@@ -146,16 +148,26 @@ public class ArrayUtilities {
 		System.out.println(output);
 	}
 
-	/*
+	
 	// Duplicate an array
 	// Pre-condition: array must be, at least, one position
 	// input: array (a), first index (beg) and last index (end)
 	// output: an array (temp)
 	public static int[] equalArray(int[] a, int beg, int end) {
+		if (a.length < 1) return null;
 		
-	}
-	
+		int lastIndex = a.length - 1 < end ? a.length - 1 : end;
+		
+		int[] result = new int[end - beg + 1];
 
+		for (int i = beg; i <= lastIndex; i++) {
+			result[i] = a[i];
+		}
+
+		return result;
+	}  
+	
+	
 	// Compare arrays
 	// input:  two arrays (a and b)
 	// output: boolean value or simply true/false
@@ -163,7 +175,7 @@ public class ArrayUtilities {
 		
 	}
 
-
+	/*
 	// Reverse the array 
 	// Pre-condition: array must be, at least, one position
 	// input: array (a)
@@ -256,20 +268,23 @@ public class ArrayUtilities {
 	// Convert element of an array from string to integer. 
 	// Pre-condition: considering negative values
 	// input: String
-	// output: integer. 
+	// output: integer.
 	public static int string2Int( String str ){
        int result = 0;
+
        boolean isNegative = str.charAt(0) == '-' ? true: false;
+
        int beginIndex = isNegative ? 1 : 0;
 
        for (int c = str.length() - 1, mult = 1; c >= beginIndex ; c--, mult *=10) {
-       		result += (str.charAt(c) - '0') * mult; 
+                       result += (str.charAt(c) - '0') * mult;
        }
 
-       if (isNegative) result *= -1;
+       result = isNegative ? result * -1 : result;
 
        return result;
-	}   
+	}
+
 
 	/*
 	// Convert element of an array from integer to string. 
@@ -289,16 +304,18 @@ public class ArrayUtilities {
 		
 	}
 
-
+	*/
 	// Add number in array
 	// Pre-condition: array must be, at least, one position
 	// input: array (a) and number (num)
 	// output: a second array with num
 	public static int[] append(int[] a, int num) {
-		
+		int[] result = a;
+		result[result.length-1] = num;
+		return result;
 	}
 
-
+	/*
 	// Square elements of an array
 	public static int[] quadratic(int[] a){
 		
