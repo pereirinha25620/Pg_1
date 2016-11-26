@@ -97,7 +97,7 @@ public class ArrayUtilities {
         if (str.length() != 0) {
             String[] numbers = str.split(" ");
             
-            for (i = 0; i < numbers.length; ++i) {
+            for (int i = 0; i < numbers.length; ++i) {
                 nnewarr[i] = string2Int(numbers[i]);
             }
             if (compareArray(arr, nnewarr) == true)

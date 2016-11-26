@@ -30,53 +30,56 @@ public class ArrayUtilities {
 		// capicua?
 		System.out.print("Is capicua? ");
 		System.out.println(isCapicua(arr) + "\n");
-
+		*/
 		// reverse
 		System.out.println("Reverse array:");
 		reverse(arr);
 		printArray(arr, 0, arr.length-1);
-		
+
+
 		// find
-		int i = find(arr, 8);
-		System.out.println("Index of 8 = " + i);
+		int ind = find(arr, 8);
+		System.out.println("Index of 8 = " + ind);
 		System.out.println("Index of 99 (non exist) -> return arr.length = " + find(arr, 99) + "\n");
 		
 		// findMax
 		int idxMax = findMax(arr);
 		System.out.println("Max = " + arr[idxMax] + " in position " + idxMax + "\n");
 		
+		
 		// findMin
 		int idxMin = findMin(arr);
 		System.out.println("Min = " + arr[idxMin] + " in position " + idxMin + "\n");
+		
 		
 		// rotateLeft
 		System.out.println("After rotate left");
 		rotateLeft(arr);
 		printArray(arr, 0, arr.length-1);
-		
+
 		// rotateRight
 		System.out.println("After rotate right");
 		rotateRight(arr);
 		printArray(arr, 0, arr.length-1);
 	
-		*/
 		// add num
 		int num = 10;
 		int[] newarr = new int[arr.length+1];
-		newarr = equalArray(arr, 0, newarr.length);
+		newarr = equalArray(arr, 0, newarr.length-1);
 		newarr = append(newarr, num);
 		printArray(newarr, 0, newarr.length-1);
 
-		/*
+		
 		//  square of elements
         System.out.println("Square elements of an array: ");
         printArray(quadratic(newarr), 0, newarr.length - 1);
 
 		// order values by increase
 		System.out.println("After ordering");
-		sort(arr);
+		arr = sort(arr);								
 		printArray(arr, 0, arr.length-1);
 
+		/*
 		// count repetead numbers
 		System.out.print("Number of equals: ");
 		int numrepetead = countEquals(arr);
@@ -86,21 +89,22 @@ public class ArrayUtilities {
 		System.out.println("Remove equals if exist!");
 		arr = removeEquals(arr);
 		printArray(arr, 0, (arr.length-1));
+		*/
 
 		// remove zeros from the end of the array
 		System.out.println("Remove all zeros from array at right.");
-		arr = trim(arr);
+		//arr = trim(arr);
 		printArray(arr, 0, arr.length-1);
 
 
 		// compare arrays
         System.out.println("Enter a new array");
         String str = in.nextLine();
-        int[] nnewarr = new int[str.length()];
+        //int[] nnewarr = new int[str.length()];
         if (str.length() != 0) {
             String[] numbers = str.split(" ");
-            
-            for (i = 0; i < numbers.length; ++i) {
+            int[] nnewarr = new int[numbers.length];
+            for (int i = 0; i < numbers.length; ++i) {
                 nnewarr[i] = string2Int(numbers[i]);
             }
             if (compareArray(arr, nnewarr) == true)
@@ -111,7 +115,7 @@ public class ArrayUtilities {
         else
             System.out.println("None array exist.\n");
 
-	
+		/*
         // Intersection of 2 ordered arrays
 		System.out.print("Intersection: ");
 		nnewarr = sort(trim(nnewarr));  	// last array
@@ -156,14 +160,14 @@ public class ArrayUtilities {
 	public static int[] equalArray(int[] a, int beg, int end) {
 		if (a.length < 1) return null;
 		
-		int lastIndex = a.length - 1 < end ? a.length - 1 : end;
+		int dim = beg == 0 ? end + 1 : end - beg + 1;
+		int[] result = new int[dim];
+		end = a.length - 1 < end ? a.length - 1 : end;
 		
-		int[] result = new int[end - beg + 1];
-
-		for (int i = beg; i <= lastIndex; i++) {
+		for (int i = end; i >= 0; i--) {
 			result[i] = a[i];
 		}
-
+		
 		return result;
 	}  
 	
@@ -172,49 +176,95 @@ public class ArrayUtilities {
 	// input:  two arrays (a and b)
 	// output: boolean value or simply true/false
 	public static boolean compareArray(int[] a, int[] b) {		
-		
+		if (a.length != b.length) return false;
+
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != b[i]) return false;
+		}
+
+		return true;
 	}
 
-	/*
 	// Reverse the array 
 	// Pre-condition: array must be, at least, one position
 	// input: array (a)
 	// output: the same array, then the return should be "void"
 	public static void reverse(int[] a) {
+		if (a.length < 1) return;
 		
+		int temp = 0;
+		for (int i = 0; i < a.length / 2; i++) {
+			temp = a[a.length - 1 - i];
+			a[a.length - 1 - i] = a[i];
+			a[i] = temp;
+		}
 	}
-	
 
 	// Return the index of element if exist or, a.length otherwise
 	// input: array (a) and a value (elem)
 	// output: position of elem in array or a.length
 	public static int find(int[] a, int elem) {
-		
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == elem) return i;
+		}
+
+		return a.length;	
 	}
 	 
-
+	
 	// Return the index of maximum 
 	// Pre-condition: array must be, at least, one position
 	// input: array (a) 
 	// output: position with maximum value
 	public static int findMax(int[] a) {
-		
+		if (a.length < 1) return -1;
+
+		int max = a[0];
+		int indexMax = 0;
+
+		for (int i = 1; i < a.length; i++) {
+			if (a[i] > max) {
+				max = a[i];
+				indexMax = i;
+			}
+		}
+
+		return indexMax;
 	}
+
 	
 	// Return the index of minimum 
 	// Pre-condition: array must be, at least, one position
 	// input: array (a) 
 	// output: position with minimum value
 	public static int findMin(int[] a) {
-		
+		if (a.length < 1) return -1;
+
+		int min = a[0];
+		int indexMin = 0;
+
+		for (int i = 1; i < a.length; i++) {
+			if (a[i] < min) {
+				min = a[i];
+				indexMin = i;
+			}
+		}
+
+		return indexMin;
 	}
+	
 	
 	// Rotate elements to left
 	// Pre-condition: array must be, at least, one position
 	// input: array (a)
 	// output: the same array, then the return should be "void"
 	public static void rotateLeft(int[] a) {
-		
+		int temp = a[0];
+
+		for (int i = 1; i < a.length; i++) {
+			a[i-1] = a[i];
+		}
+		a[a.length - 1] = temp;
 	}
 	
 	
@@ -223,10 +273,15 @@ public class ArrayUtilities {
 	// input: array (a)
 	// output: the same array, then the return should be "void"
 	public static void rotateRight(int[] a) {
-		
+		int temp = a[a.length - 1];
+
+		for (int i = a.length - 2; i >= 0; i--) {
+			a[i + 1] = a[i];
+		}
+		a[0] = temp;
 	}
 
-
+	/*
 	// Intersection of 2 ordered arrays
 	// Pre-condition: array must be, at least, one position
 	// input: two ordered arrays (a and b)
@@ -315,22 +370,49 @@ public class ArrayUtilities {
 		return result;
 	}
 
-	/*
+	
 	// Square elements of an array
 	public static int[] quadratic(int[] a){
-		
-	}
+		int[] result = new int[a.length];
 
+		for (int i = 0; i < a.length; i++) {
+			result[i] = a[i]*a[i];
+		}
+
+		return result;
+	}
 
 	// Remove all zeros at the end of the array
 	public static int[] trim(int[] a) {
-		
+		int countZeros = 0;
+
+		for (int i = a.length - 1; i >= 0; i--) {
+			if (a[i] != 0) break;
+			countZeros++;
+		}
+
+		int[] result = equalArray(a, 0, a.length - 1 - countZeros);
+
+		return result;
 	}
 
 	// Ascending order 
 	// Pre-condition: array must be, at least, one position
 	public static int[] sort(int[] a){
-		
+		if (a.length < 1) return null;
+
+		int[] result = equalArray(a, 0, a.length - 1);
+
+		for (int i = 1; i < result.length; i++) {
+			for (int j = 0; j < result.length; j++) {
+				if (result[j] > result[i]) {
+					int aux = result[j];
+					result[j] = result[i];
+					result[i] = aux;
+				}
+			}
+		}
+
+		return result;
 	}
-	*/
 }
