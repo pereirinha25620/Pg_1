@@ -26,11 +26,10 @@ public class ArrayUtilities {
 		System.out.println("Original array:");
 		printArray(arr,0,arr.length-1);
 
-		/*
 		// capicua?
 		System.out.print("Is capicua? ");
 		System.out.println(isCapicua(arr) + "\n");
-		*/
+		
 		// reverse
 		System.out.println("Reverse array:");
 		reverse(arr);
@@ -65,7 +64,7 @@ public class ArrayUtilities {
 		// add num
 		int num = 10;
 		int[] newarr = new int[arr.length+1];
-		newarr = equalArray(arr, 0, newarr.length-1);
+		newarr = equalArray(arr, 0, newarr.length);
 		newarr = append(newarr, num);
 		printArray(newarr, 0, newarr.length-1);
 
@@ -73,11 +72,6 @@ public class ArrayUtilities {
 		//  square of elements
         System.out.println("Square elements of an array: ");
         printArray(quadratic(newarr), 0, newarr.length - 1);
-
-		// order values by increase
-		System.out.println("After ordering");
-		arr = sort(arr);								
-		printArray(arr, 0, arr.length-1);
 
 		/*
 		// count repetead numbers
@@ -93,9 +87,13 @@ public class ArrayUtilities {
 
 		// remove zeros from the end of the array
 		System.out.println("Remove all zeros from array at right.");
-		//arr = trim(arr);
+		arr = trim(arr);
 		printArray(arr, 0, arr.length-1);
 
+		// order values by increase
+		System.out.println("After ordering");
+		arr = sort(arr);								
+		printArray(arr, 0, arr.length-1);
 
 		// compare arrays
         System.out.println("Enter a new array");
@@ -159,6 +157,7 @@ public class ArrayUtilities {
 	// output: an array (temp)
 	public static int[] equalArray(int[] a, int beg, int end) {
 		if (a.length < 1) return null;
+		if (end > a.length) end = a.length;
 		
 		int dim = beg == 0 ? end + 1 : end - beg + 1;
 		int[] result = new int[dim];
@@ -309,16 +308,16 @@ public class ArrayUtilities {
 	public static int[] removeEquals(int[] a){
 		
     }
-
+	*/
 
     // Count equals numbers 
 	// Pre-condition: array must be, at least, one position
 	// input: array
 	// output: number of equals
-    public static int countEquals(int[] a){
-    	
+    public static int countEquals(int[] a) {
+
+    	return 0;
 	}
-	*/
 
 	// Convert element of an array from string to integer. 
 	// Pre-condition: considering negative values
@@ -341,25 +340,32 @@ public class ArrayUtilities {
 	}
 
 
-	/*
+	
 	// Convert element of an array from integer to string. 
 	// Pre-condition: considering negative values
 	// input: integer
 	// output: String. 
 	public static String[] int2String( int[] a ){
-       
+       String[] result = new String[a.length];
+
+       for (int i = 0; i < a.length; i++) {
+       		result[i] = "" + a[i];
+       }
+
+       return result;
 	}   
 
-	
 	// Is a capicua 
 	// Pre-condition: array must be, at least, one position
 	// input: array (a)
 	// output: boolean result
 	public static boolean isCapicua(int[] a){ 
-		
+		for (int i = 0; i < a.length / 2; i++) {
+			if (a[i] != a[a.length - 1 - i]) return false;
+		}
+		return true;		
 	}
 
-	*/
 	// Add number in array
 	// Pre-condition: array must be, at least, one position
 	// input: array (a) and number (num)
